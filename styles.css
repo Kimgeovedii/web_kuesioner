@@ -1,0 +1,138 @@
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+.landing-page {
+    position: relative;
+    background: url('/galaxy-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Menghilangkan overflow yang mungkin muncul karena efek meteor besar */
+}
+
+.meteor {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background-color: #fff;
+    animation: meteorFall linear infinite;
+}
+
+.meteor-big {
+    position: absolute;
+    width: 4px;
+    height: 20px;
+    background-color: #fff;
+    animation: meteorFall linear infinite;
+}
+
+@keyframes meteorFall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.meteor1 { left: 10%; animation-duration: 2s; }
+.meteor2 { left: 30%; animation-duration: 3s; }
+.meteor3 { left: 50%; animation-duration: 2.5s; }
+.meteor4 { left: 70%; animation-duration: 3.5s; }
+.meteor5 { left: 90%; animation-duration: 2.8s; }
+
+.meteor-big1 { left: 15%; animation-duration: 4s; }
+.meteor-big2 { left: 35%; animation-duration: 5s; }
+.meteor-big3 { left: 55%; animation-duration: 4.5s; }
+.meteor-big4 { left: 75%; animation-duration: 5.5s; }
+.meteor-big5 { left: 95%; animation-duration: 4.8s; }
+
+.welcome-message {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    opacity: 0; /* Mulai dengan keadaan tidak terlihat */
+    animation: fadeInUp 1.5s ease-out forwards; /* Animasi efek muncul dari bawah */
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Tombol berbentuk planet atau bulan */
+.button {
+    background-color: rgba(52, 152, 219, 0.5); /* Warna transparan */
+    color: #fff;
+    border: none;
+    padding: 15px 30px; /* Sesuaikan dengan ukuran yang diinginkan */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 5px;
+    width: 100%;
+    border-radius: 50%; /* Membuat tombol berbentuk lingkaran */
+    position: relative;
+    overflow: hidden;
+    transform: translateY(-100vh); /* Mulai dengan posisi tombol di luar layar */
+    animation: fadeInDown 1.5s ease-out forwards, moveFromTop 1.5s ease-out 0.5s forwards; /* Animasi efek jatuh dari atas dan muncul */
+}
+
+.button:before {
+    content: ''; /* Pseudo element untuk efek bayangan */
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    bottom: -50%; /* Memindahkan bayangan ke bawah */
+    left: 0;
+    border-radius: 50%;
+    transition: bottom 0.3s ease;
+}
+
+.button:hover {
+    background-color: rgba(41, 128, 185, 0.8); /* Warna transparan saat dihover */
+    transform: scale(1.1); /* Membesarkan tombol saat dihover */
+}
+
+.button:hover:before {
+    bottom: -25%; /* Mengurangi tinggi bayangan saat dihover */
+}
+
+/* Animasi untuk efek tombol jatuh dari atas */
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-100vh);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Animasi untuk efek tulisan muncul dari bawah */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animasi untuk efek tombol bergerak dari atas ke tempat semula */
+@keyframes moveFromTop {
+    from {
+        transform: translateY(-100vh);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
